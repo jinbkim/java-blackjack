@@ -17,4 +17,9 @@ class PlayersTest {
                 .isTrue();
         }
     }
+
+    @Test
+    void 플레이어_이름의_비정상적인_입력받기() {
+        Assertions.assertThatThrownBy(() -> new Players(" 가 ,, 나 다, 라마 바, 사 아자차 "));
+    }
 }

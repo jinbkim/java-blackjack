@@ -5,11 +5,14 @@ import java.util.Scanner;
 
 public class InputView {
 
-    public String requestPlayer() {
+    public Players requestPlayer() {
         String input = requestInput(OutputView.REQUEST_PLAYER);
-        Players Players = new Players(input);
-
-        return input;
+        try {
+            return new Players(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return requestPlayer();
+        }
     }
 
     public String requestInput(String input) {
