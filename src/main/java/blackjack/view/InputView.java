@@ -7,7 +7,8 @@ import java.util.regex.Pattern;
 
 public class InputView {
 
-    private static String ONLY_NUMBER_REGEX = "^[0-9]*$";
+    private static final String ONLY_NUMBER_REGEX = "^[0-9]*$";
+    private static final String SPACE_REGEX = "\\s";
 
     public PlayerNames requestPlayerName() {
         String input = requestInput(OutputView.REQUEST_PLAYER_NAME);
@@ -40,14 +41,15 @@ public class InputView {
 
     private int requestPlayerBetAmount(String playerName) {
         String input = requestInput(playerName + OutputView.REQUEST_BET_AMOUNT);
+        String noSpaceInput = input.replaceAll(SPACE_REGEX, input);
 
         try {
-            validateBetAmount(input);
+            validateBetAmount(noSpaceInput);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return requestPlayerBetAmount(playerName);
         }
-        return Integer.parseInt(input);
+        return Integer.parseInt(noSpaceInput);
     }
 
     private String requestInput(String input) {

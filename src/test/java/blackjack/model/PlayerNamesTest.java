@@ -17,4 +17,15 @@ class PlayerNamesTest {
                 .isTrue();
         }
     }
+
+    @Test
+    void 플레이어_이름의_정상적인_입력() {
+        Assertions.assertThatCode(() -> new PlayerNames(" 가 , 나 다, 라마 바, 사 아자차 "))
+            .doesNotThrowAnyException();
+    }
+
+    @Test
+    void 플레이어_이름의_비정상적인_입력() {
+        Assertions.assertThatThrownBy(() -> new PlayerNames(" 가 ,, 나 다, 라마 바, 사 아자차 "));
+    }
 }
