@@ -3,18 +3,18 @@ package blackjack.model.player;
 public class Player {
 
     private String name;
-    private int betAmounts;
+    private int money;
 
-    public Player(String name, int betAmounts) {
+    public Player(String name, int money) {
         this.name = name;
-        this.betAmounts = betAmounts;
+        this.money = money;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getBetAmounts() {
-        return betAmounts;
+    public int getMoney() {
+        return money;
     }
 }
