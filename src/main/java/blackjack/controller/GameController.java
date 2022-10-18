@@ -1,8 +1,8 @@
 package blackjack.controller;
 
-import blackjack.model.PlayerBetAmounts;
-import blackjack.model.PlayerNames;
-import blackjack.model.Players;
+import blackjack.model.player.PlayerBetAmounts;
+import blackjack.model.player.PlayerNames;
+import blackjack.model.player.Players;
 import blackjack.view.InputView;
 
 public class GameController {

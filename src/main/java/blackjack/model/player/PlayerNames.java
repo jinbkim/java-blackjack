@@ -1,4 +1,4 @@
-package blackjack.model;
+package blackjack.model.player;
 
 import blackjack.view.OutputView;
 import java.util.Arrays;

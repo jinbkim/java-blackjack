@@ -1,7 +1,7 @@
 package blackjack.view;
 
-import blackjack.model.PlayerBetAmounts;
-import blackjack.model.PlayerNames;
+import blackjack.model.player.PlayerBetAmounts;
+import blackjack.model.player.PlayerNames;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 

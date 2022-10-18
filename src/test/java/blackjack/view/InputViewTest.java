@@ -9,7 +9,8 @@ class InputViewTest {
 
     @Test
     void 배팅_금액_정상적인_입력() {
-        Assertions.assertThatCode(() -> inputView.validateBetAmount("1")).doesNotThrowAnyException();
+        Assertions.assertThatCode(() -> inputView.validateBetAmount("1"))
+            .doesNotThrowAnyException();
     }
 
     @Test
