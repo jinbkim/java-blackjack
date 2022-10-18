@@ -1,8 +1,7 @@
 package blackjack.view;
 
+import blackjack.model.PlayerBetAmounts;
 import blackjack.model.PlayerNames;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -19,14 +18,13 @@ public class InputView {
         }
     }
 
-    public List<Integer> requestPlayersBetAmount(List<String> playersName) {
-        List<Integer> playersBetAmount = new ArrayList<>();
+    public PlayerBetAmounts requestPlayerBetAmounts(PlayerNames playerNames) {
+        PlayerBetAmounts playerBetAmounts = new PlayerBetAmounts();
 
-        for (String playerName : playersName) {
-            int betAmount = requestPlayerBetAmount(playerName);
-            playersBetAmount.add(betAmount);
-        }
-        return playersBetAmount;
+        playerNames.getNames()
+            .stream()
+            .forEach(name -> playerBetAmounts.add(requestPlayerBetAmount(name)));
+        return playerBetAmounts;
     }
 
     private int requestPlayerBetAmount(String PlayerName) {

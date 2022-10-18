@@ -1,5 +1,6 @@
 package blackjack.controller;
 
+import blackjack.model.PlayerBetAmounts;
 import blackjack.model.PlayerNames;
 import blackjack.view.InputView;
 
@@ -9,6 +10,6 @@ public class GameController {
 
     public void run() {
         PlayerNames playerNames = inputView.requestPlayerName();
-        //        List<Integer> playersBetAmount = inputView.requestPlayersBetAmount(playersName);
+        PlayerBetAmounts playerBetAmounts = inputView.requestPlayerBetAmounts(playerNames);
     }
 }
