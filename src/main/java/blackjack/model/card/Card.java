@@ -2,8 +2,8 @@ package blackjack.model.card;
 
 public class Card {
 
-    private CardLetter letter;
-    private CardShape shape;
+    private final CardLetter letter;
+    private final CardShape shape;
 
     public Card(CardLetter letter, CardShape shape) {
         this.letter = letter;
