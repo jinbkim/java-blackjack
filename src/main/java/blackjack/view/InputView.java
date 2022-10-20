@@ -11,12 +11,13 @@ public class InputView {
     private static final String SPACE_REGEX = "\\s";
 
     public static PlayerNames requestPlayerName() {
-        String input = requestInput(OutputView.REQUEST_PLAYER_NAME);
+        OutputView.printRequestPlayerName();
+        String input = requestInput();
 
         try {
             return new PlayerNames(input);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            OutputView.printWrongPlayerName();
             return requestPlayerName();
         }
     }
@@ -32,30 +33,30 @@ public class InputView {
 
     public static void validateBetAmount(String input) {
         if (!Pattern.matches(ONLY_NUMBER_REGEX, input)) {
-            throw new IllegalArgumentException(OutputView.WRONG_BET_AMOUNT);
+            throw new IllegalArgumentException();
         }
         if (Integer.parseInt(input) <= 0) {
-            throw new IllegalArgumentException(OutputView.WRONG_BET_AMOUNT);
+            throw new IllegalArgumentException();
         }
     }
 
     private static int requestPlayerBetAmount(String playerName) {
-        String input = requestInput(playerName + OutputView.REQUEST_BET_AMOUNT);
+        OutputView.printRequestPlayerBetAmount(playerName);
+        String input = requestInput();
         String noSpaceInput = input.replaceAll(SPACE_REGEX, input);
 
         try {
             validateBetAmount(noSpaceInput);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            OutputView.printWrongBetAmount();
             return requestPlayerBetAmount(playerName);
         }
         return Integer.parseInt(noSpaceInput);
     }
 
-    private static String requestInput(String input) {
+    private static String requestInput() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println(input);
         return scanner.nextLine();
     }
 }

@@ -1,6 +1,5 @@
 package blackjack.model.player;
 
-import blackjack.view.OutputView;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class PlayerNames {
         names = Arrays.asList(noSpaceInput.split(PLAYER_SEP_REGEX));
 
         if (hasPlayerEmptyName(names)) {
-            throw new IllegalArgumentException(OutputView.WRONG_PLAYER_NAME);
+            throw new IllegalArgumentException();
         }
     }
 
