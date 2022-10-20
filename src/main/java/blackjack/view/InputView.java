@@ -10,7 +10,7 @@ public class InputView {
     private static final String ONLY_NUMBER_REGEX = "^[0-9]*$";
     private static final String SPACE_REGEX = "\\s";
 
-    public PlayerNames requestPlayerName() {
+    public static PlayerNames requestPlayerName() {
         String input = requestInput(OutputView.REQUEST_PLAYER_NAME);
 
         try {
@@ -21,7 +21,7 @@ public class InputView {
         }
     }
 
-    public PlayerBetAmounts requestPlayerBetAmounts(PlayerNames playerNames) {
+    public static PlayerBetAmounts requestPlayerBetAmounts(PlayerNames playerNames) {
         PlayerBetAmounts playerBetAmounts = new PlayerBetAmounts();
 
         for (String name : playerNames.getNames()) {
@@ -30,7 +30,7 @@ public class InputView {
         return playerBetAmounts;
     }
 
-    public void validateBetAmount(String input) {
+    public static void validateBetAmount(String input) {
         if (!Pattern.matches(ONLY_NUMBER_REGEX, input)) {
             throw new IllegalArgumentException(OutputView.WRONG_BET_AMOUNT);
         }
@@ -39,7 +39,7 @@ public class InputView {
         }
     }
 
-    private int requestPlayerBetAmount(String playerName) {
+    private static int requestPlayerBetAmount(String playerName) {
         String input = requestInput(playerName + OutputView.REQUEST_BET_AMOUNT);
         String noSpaceInput = input.replaceAll(SPACE_REGEX, input);
 
@@ -52,7 +52,7 @@ public class InputView {
         return Integer.parseInt(noSpaceInput);
     }
 
-    private String requestInput(String input) {
+    private static String requestInput(String input) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println(input);
