@@ -14,7 +14,7 @@ public class Players {
         }
     }
 
-    public List<Player> getPlayers() {
+    public List<Player> get() {
         return players;
     }
 }
