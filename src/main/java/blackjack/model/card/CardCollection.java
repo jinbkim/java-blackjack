@@ -15,6 +15,10 @@ public class CardCollection {
         return cards.pop();
     }
 
+    public static Stack<Card> getCards() {
+        return cards;
+    }
+
     private static void insertAllCards() {
         CardShape[] cardShapes = CardShape.values();
         CardLetter[] cardLetters = CardLetter.values();
