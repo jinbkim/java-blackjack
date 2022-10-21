@@ -1,4 +1,4 @@
-package blackjack.model.player;
+package blackjack.model;
 
 import blackjack.model.card.Card;
 import blackjack.model.card.CardCollection;

@@ -1,6 +1,6 @@
 package blackjack.view;
 
-import blackjack.model.player.Dealer;
+import blackjack.model.Dealer;
 import blackjack.model.player.Player;
 import java.util.List;
 import java.util.stream.Collectors;

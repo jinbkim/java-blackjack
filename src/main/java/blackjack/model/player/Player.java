@@ -1,5 +1,6 @@
 package blackjack.model.player;
 
+import blackjack.model.GameStatus;
 import blackjack.model.card.CardCollection;
 import blackjack.model.card.Cards;
 
@@ -28,7 +29,14 @@ public class Player {
         return cards;
     }
 
-    public void drawCard() {
+    public GameStatus drawCard() {
         cards.add(CardCollection.draw());
+        if (cards.isBurst()) {
+            return GameStatus.BURST;
+        }
+        if (cards.is21()) {
+            return GameStatus.BLACKJACK;
+        }
+        return GameStatus.IN_GAME;
     }
 }

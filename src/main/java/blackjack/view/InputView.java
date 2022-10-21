@@ -1,5 +1,6 @@
 package blackjack.view;
 
+import blackjack.model.GameStatus;
 import blackjack.model.player.Player;
 import blackjack.model.player.PlayerBetAmounts;
 import blackjack.model.player.PlayerNames;
@@ -62,9 +63,12 @@ public class InputView {
             requestPlayerDrawCard(player);
         }
         if (noSpaceInput.equals(DRAW_MORE_CARD)) {
-            player.drawCard();
+            GameStatus gameStatus = player.drawCard();
+
             OutputView.printPlayerCards(player);
-            requestPlayerDrawCard(player);
+            if (gameStatus == GameStatus.IN_GAME) {
+                requestPlayerDrawCard(player);
+            }
         }
     }
 

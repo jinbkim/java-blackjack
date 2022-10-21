@@ -39,6 +39,14 @@ public class Cards {
         return cards;
     }
 
+    public boolean is21() {
+        return getCardNumSumWithACard() == BLACK_JACK_LEVEL;
+    }
+
+    public boolean isBurst() {
+        return getCardNumSumWithACard() > BLACK_JACK_LEVEL;
+    }
+
     @Override
     public String toString() {
         return cards.stream()
