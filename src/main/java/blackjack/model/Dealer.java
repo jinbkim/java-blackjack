@@ -22,9 +22,12 @@ public class Dealer {
     }
 
     public void drawCard() {
+        System.out.println();
         while (cards.getCardNumSumWithACard() <= DRAW_POSSIBLE_LEVEL) {
             add(CardCollection.draw());
             OutputView.printDealerDrawCard();
         }
+        System.out.println();
+
     }
 }

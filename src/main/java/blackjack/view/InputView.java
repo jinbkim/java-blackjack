@@ -47,7 +47,9 @@ public class InputView {
 
     public static void requestPlayersDrawCard(List<Player> players) {
         players.forEach(player -> {
-            requestPlayerDrawCard(player);
+            if (!player.checkBlackjack()) {
+                requestPlayerDrawCard(player);
+            }
         });
     }
 

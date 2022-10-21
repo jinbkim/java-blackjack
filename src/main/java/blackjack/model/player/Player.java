@@ -11,6 +11,7 @@ public class Player {
     private final String name;
     private int money;
     private Cards cards = new Cards(INITIAL_CARD_COUNT);
+    private GameStatus gameStatus = GameStatus.IN_GAME;
 
     public Player(String name, int money) {
         this.name = name;
@@ -32,11 +33,20 @@ public class Player {
     public GameStatus drawCard() {
         cards.add(CardCollection.draw());
         if (cards.isBurst()) {
-            return GameStatus.BURST;
+            gameStatus = GameStatus.BURST;
         }
         if (cards.is21()) {
-            return GameStatus.BLACKJACK;
+            gameStatus = GameStatus.DONE;
         }
-        return GameStatus.IN_GAME;
+        return gameStatus;
+    }
+
+    public boolean checkBlackjack() {
+        if (cards.get()
+            .size() == INITIAL_CARD_COUNT && cards.is21()) {
+            gameStatus = GameStatus.BLACKJACK;
+            return true;
+        }
+        return false;
     }
 }

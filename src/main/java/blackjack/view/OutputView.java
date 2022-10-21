@@ -19,6 +19,7 @@ public class OutputView {
     private static final String CARD_STATE = "카드: ";
     private static final String PLAYER_NAME_JOIN_DEL = ", ";
     private static final String NEWLINE = "\n";
+    private static final String RESULT = " - 결과: ";
 
     public static void printWrongPlayerName() {
         System.out.println(WRONG_PLAYER_NAME);
@@ -46,17 +47,6 @@ public class OutputView {
         printPlayersCards(players);
     }
 
-    public static void printDealerCards(Dealer dealer) {
-        System.out.println(DEALER + CARD_STATE + dealer.getCards()
-            .toString());
-    }
-
-    public static void printPlayersCards(List<Player> players) {
-        players.forEach(player -> {
-            printPlayerCards(player);
-        });
-    }
-
     public static void printPlayerCards(Player player) {
         System.out.println(player.getName() + CARD_STATE + player.getCards());
     }
@@ -71,5 +61,38 @@ public class OutputView {
 
     public static void printDealerDrawCard() {
         System.out.println(DEALER_DRAW_CARD);
+    }
+
+    public static void printCardResult(List<Player> players, Dealer dealer) {
+        printDealerCardResult(dealer);
+        printPlayersCardResult(players);
+    }
+
+    private static void printDealerCards(Dealer dealer) {
+        System.out.println(DEALER + CARD_STATE + dealer.getCards()
+            .toString());
+    }
+
+    private static void printPlayersCards(List<Player> players) {
+        players.forEach(player -> {
+            printPlayerCards(player);
+        });
+    }
+
+    private static void printDealerCardResult(Dealer dealer) {
+        System.out.println(DEALER + CARD_STATE + dealer.getCards()
+            .toString() + RESULT + dealer.getCards()
+            .getCardNumSumWithACard());
+    }
+
+    private static void printPlayersCardResult(List<Player> players) {
+        players.forEach(player -> {
+            printPlayerCardResult(player);
+        });
+    }
+
+    private static void printPlayerCardResult(Player player) {
+        System.out.println(player.getName() + CARD_STATE + player.getCards() + RESULT + player.getCards()
+            .getCardNumSumWithACard());
     }
 }

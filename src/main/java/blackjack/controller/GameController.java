@@ -20,5 +20,6 @@ public class GameController {
         dealer.add(CardCollection.draw());
         InputView.requestPlayersDrawCard(players.get());
         dealer.drawCard();
+        OutputView.printCardResult(players.get(), dealer);
     }
 }
