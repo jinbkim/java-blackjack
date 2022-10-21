@@ -1,5 +1,6 @@
 package blackjack.model.player;
 
+import blackjack.model.card.CardCollection;
 import blackjack.model.card.Cards;
 
 public class Player {
@@ -25,5 +26,9 @@ public class Player {
 
     public Cards getCards() {
         return cards;
+    }
+
+    public void drawCard() {
+        cards.add(CardCollection.draw());
     }
 }

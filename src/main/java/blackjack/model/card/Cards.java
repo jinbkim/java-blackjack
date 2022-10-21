@@ -16,6 +16,10 @@ public class Cards {
         }
     }
 
+    public void add(Card card) {
+        cards.add(card);
+    }
+
     @Override
     public String toString() {
         return cards.stream()
