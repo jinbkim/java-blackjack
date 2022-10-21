@@ -57,8 +57,7 @@ public class InputView {
 
         try {
             validateIsDrawCard(noSpaceInput);
-        }
-        catch(IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             OutputView.printWrongIsDrawCard();
             requestPlayerDrawCard(player);
         }

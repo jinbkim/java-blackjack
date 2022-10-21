@@ -7,6 +7,10 @@ import java.util.stream.Collectors;
 public class Cards {
 
     private static final String CARD_NAME_JOIN_DEL = ", ";
+    private static final String A_CARD = "A";
+    private static final int BLACK_JACK_LEVEL = 21;
+    private static final int A_CARD_SCORE_MAX = 11;
+    private static final int A_CARD_SCORE_MIN = 1;
 
     private List<Card> cards = new ArrayList<>();
 
@@ -20,11 +24,19 @@ public class Cards {
         cards.add(card);
     }
 
-    public int getCardNumSum() {
-        return cards.stream()
-            .map(card -> card.getScore())
-            .reduce((x, y) -> x + y)
-            .get();
+    public int getCardNumSumWithACard() {
+        int cardNumSum = getCardNumSum();
+        int numOfACard = countACard();
+
+        while (cardNumSum > BLACK_JACK_LEVEL && numOfACard > 0) {
+            numOfACard--;
+            cardNumSum -= (A_CARD_SCORE_MAX - A_CARD_SCORE_MIN);
+        }
+        return cardNumSum;
+    }
+
+    public List<Card> get() {
+        return cards;
     }
 
     @Override
@@ -32,5 +44,18 @@ public class Cards {
         return cards.stream()
             .map(card -> card.toString())
             .collect(Collectors.joining(CARD_NAME_JOIN_DEL));
+    }
+
+    private int getCardNumSum() {
+        return cards.stream()
+            .map(card -> card.getScore())
+            .reduce((x, y) -> x + y)
+            .get();
+    }
+
+    private int countACard() {
+        return (int) cards.stream()
+            .filter(card -> card.getLetter() == A_CARD)
+            .count();
     }
 }

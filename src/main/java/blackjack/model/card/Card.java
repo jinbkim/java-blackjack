@@ -18,6 +18,10 @@ public class Card {
         return shape.getShape();
     }
 
+    public int getScore() {
+        return letter.getScore();
+    }
+
     @Override
     public String toString() {
         return letter.getLetter() + shape.getShape();

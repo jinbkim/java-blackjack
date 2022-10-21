@@ -21,8 +21,10 @@ class InputViewTest {
 
     @Test
     void 카드를_더받을지에_대한_정상적인_입력() {
-        Assertions.assertThatCode(() -> InputView.validateIsDrawCard("y")).doesNotThrowAnyException();
-        Assertions.assertThatCode(() -> InputView.validateIsDrawCard("n")).doesNotThrowAnyException();
+        Assertions.assertThatCode(() -> InputView.validateIsDrawCard("y"))
+            .doesNotThrowAnyException();
+        Assertions.assertThatCode(() -> InputView.validateIsDrawCard("n"))
+            .doesNotThrowAnyException();
     }
 
     @Test
