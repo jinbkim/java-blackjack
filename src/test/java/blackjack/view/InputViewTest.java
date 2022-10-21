@@ -5,19 +5,32 @@ import org.junit.jupiter.api.Test;
 
 class InputViewTest {
 
-    private InputView inputView = new InputView();
-
     @Test
     void 배팅_금액_정상적인_입력() {
-        Assertions.assertThatCode(() -> inputView.validateBetAmount("1"))
+        Assertions.assertThatCode(() -> InputView.validateBetAmount("1"))
             .doesNotThrowAnyException();
     }
 
     @Test
     void 배팅_금액_비정상적인_입력() {
-        Assertions.assertThatThrownBy(() -> inputView.validateBetAmount("a"));
-        Assertions.assertThatThrownBy(() -> inputView.validateBetAmount("1b"));
-        Assertions.assertThatThrownBy(() -> inputView.validateBetAmount("-3"));
-        Assertions.assertThatThrownBy(() -> inputView.validateBetAmount("0"));
+        Assertions.assertThatThrownBy(() -> InputView.validateBetAmount("a"));
+        Assertions.assertThatThrownBy(() -> InputView.validateBetAmount("1b"));
+        Assertions.assertThatThrownBy(() -> InputView.validateBetAmount("-3"));
+        Assertions.assertThatThrownBy(() -> InputView.validateBetAmount("0"));
+    }
+
+    @Test
+    void 카드를_더받을지에_대한_정상적인_입력() {
+        Assertions.assertThatCode(() -> InputView.validateIsDrawCard("y")).doesNotThrowAnyException();
+        Assertions.assertThatCode(() -> InputView.validateIsDrawCard("n")).doesNotThrowAnyException();
+    }
+
+    @Test
+    void 카드를_더받을지에_대한_비정상적인_입력() {
+        Assertions.assertThatThrownBy(() -> InputView.validateIsDrawCard("a"));
+        Assertions.assertThatThrownBy(() -> InputView.validateIsDrawCard("yy"));
+        Assertions.assertThatThrownBy(() -> InputView.validateIsDrawCard("nn"));
+        Assertions.assertThatThrownBy(() -> InputView.validateIsDrawCard("yn"));
+
     }
 }

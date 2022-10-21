@@ -11,6 +11,7 @@ public class InputView {
 
     private static final String ONLY_NUMBER_REGEX = "^[0-9]*$";
     private static final String SPACE_REGEX = "\\s";
+    private static final String IS_DRAW_CARD_REGEX = "^[yn]{1}$";
     private static final String DRAW_MORE_CARD = "y";
 
     public static PlayerNames requestPlayerName() {
@@ -54,6 +55,13 @@ public class InputView {
         String input = requestInput();
         String noSpaceInput = input.replaceAll(SPACE_REGEX, input);
 
+        try {
+            validateIsDrawCard(noSpaceInput);
+        }
+        catch(IllegalArgumentException e) {
+            OutputView.printWrongIsDrawCard();
+            requestPlayerDrawCard(player);
+        }
         if (noSpaceInput.equals(DRAW_MORE_CARD)) {
             player.drawCard();
             OutputView.printPlayerCards(player);
@@ -79,5 +87,11 @@ public class InputView {
         Scanner scanner = new Scanner(System.in);
 
         return scanner.nextLine();
+    }
+
+    public static void validateIsDrawCard(String input) {
+        if (!Pattern.matches(IS_DRAW_CARD_REGEX, input)) {
+            throw new IllegalArgumentException();
+        }
     }
 }
