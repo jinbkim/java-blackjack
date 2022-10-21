@@ -20,6 +20,13 @@ public class Cards {
         cards.add(card);
     }
 
+    public int getCardNumSum() {
+        return cards.stream()
+            .map(card -> card.getScore())
+            .reduce((x, y) -> x + y)
+            .get();
+    }
+
     @Override
     public String toString() {
         return cards.stream()
