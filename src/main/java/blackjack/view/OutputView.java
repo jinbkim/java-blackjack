@@ -14,6 +14,7 @@ public class OutputView {
     private static final String[] INITIAL_CARD_DISTRIBUTION = {"딜러와 ", "에게 2장의 카드를 나누었습니다."};
     private static final String REQUEST_DRAW_CARD = "는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)";
     private static final String WRONG_IS_DRAW_CARD = "y 또는 n만 입력하세요.";
+    private static final String DEALER_DRAW_CARD = "딜러는 16이하라 한장의 카드를 더 받았습니다.";
     private static final String DEALER = "딜러";
     private static final String CARD_STATE = "카드: ";
     private static final String PLAYER_NAME_JOIN_DEL = ", ";
@@ -66,5 +67,9 @@ public class OutputView {
 
     public static void printWrongIsDrawCard() {
         System.out.println(WRONG_IS_DRAW_CARD);
+    }
+
+    public static void printDealerDrawCard() {
+        System.out.println(DEALER_DRAW_CARD);
     }
 }

@@ -1,5 +1,6 @@
 package blackjack.controller;
 
+import blackjack.model.card.CardCollection;
 import blackjack.model.player.Dealer;
 import blackjack.model.player.PlayerBetAmounts;
 import blackjack.model.player.PlayerNames;
@@ -17,5 +18,7 @@ public class GameController {
 
         OutputView.printInitialCardDistribution(players.get(), dealer);
         InputView.requestPlayersDrawCard(players.get());
+        dealer.add(CardCollection.draw());
+        dealer.drawCard();
     }
 }
