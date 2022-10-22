@@ -20,6 +20,10 @@ public class Cards {
         }
     }
 
+    public Cards(List<Card> cards) {
+        this.cards = cards;
+    }
+
     public void add(Card card) {
         cards.add(card);
     }

@@ -11,21 +11,25 @@ public class Player {
     private static final double BLACKJACK_DIVIDEND_RATE = 1.5;
 
     private final String name;
-    private int money;
+    private int money = 0;
+    private int betAmount;
     private Cards cards = new Cards(INITIAL_CARD_COUNT);
     private GameStatus gameStatus = GameStatus.IN_GAME;
 
-    public Player(String name, int money) {
+    public Player(String name, int betAmount) {
         this.name = name;
-        this.money = money;
+        this.betAmount = betAmount;
+    }
+
+    public Player(String name, int betAmount, Cards cards, GameStatus gameStatus) {
+        this.name = name;
+        this.betAmount = betAmount;
+        this.cards = cards;
+        this.gameStatus = gameStatus;
     }
 
     public String getName() {
         return name;
-    }
-
-    public int getMoney() {
-        return money;
     }
 
     public Cards getCards() {
@@ -57,38 +61,42 @@ public class Player {
 
     public void calculateMoney(Dealer dealer) {
         if (gameStatus == GameStatus.BURST) {
-            lose(money);
-            dealer.win(money);
+            lose(betAmount);
+            dealer.win(betAmount);
         }
         else if (gameStatus == GameStatus.BLACKJACK && !dealer.isGameStatus(GameStatus.BLACKJACK)) {
-            win((int) BLACKJACK_DIVIDEND_RATE * money);
-            dealer.lose((int) BLACKJACK_DIVIDEND_RATE * money);
+            win((int) (BLACKJACK_DIVIDEND_RATE * betAmount));
+            dealer.lose((int) (BLACKJACK_DIVIDEND_RATE * betAmount));
         }
         else if (gameStatus == GameStatus.DONE && dealer.isGameStatus(GameStatus.BURST)) {
-            win(money);
-            dealer.lose(money);
+            win(betAmount);
+            dealer.lose(betAmount);
         }
         else if (gameStatus == GameStatus.DONE && !dealer.isGameStatus(GameStatus.BURST)) {
             if (cards.diff(dealer.getCards()) > 0) {
-                win(money);
-                dealer.lose(money);
+                win(betAmount);
+                dealer.lose(betAmount);
             }
             else if (cards.diff(dealer.getCards()) < 0) {
-                lose(money);
-                dealer.win(money);
+                lose(betAmount);
+                dealer.win(betAmount);
             }
         }
     }
 
-    public void win(int money) {
-        this.money += money;
+    public void win(int betAmount) {
+        money += betAmount;
     }
 
-    public void lose(int money) {
-        this.money -= money;
+    public void lose(int betAmount) {
+        money -= betAmount;
     }
 
     public boolean isGameStatus(GameStatus gameStatus) {
         return this.gameStatus == gameStatus;
+    }
+
+    public boolean isMoney(int money) {
+        return this.money == money;
     }
 }
