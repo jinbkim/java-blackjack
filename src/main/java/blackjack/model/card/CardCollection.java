@@ -15,19 +15,20 @@ public class CardCollection {
         return cards.pop();
     }
 
-    public static Stack<Card> getCards() {
-        return cards;
-    }
-
     private static void insertAllCards() {
         CardShape[] cardShapes = CardShape.values();
-        CardLetter[] cardLetters = CardLetter.values();
 
         for (CardShape cardShape : cardShapes) {
-            for (CardLetter cardLetter : cardLetters) {
-                cards.add(new Card(cardLetter, cardShape));
-            }
+            insertAllCardsDecidedShape(cardShape);
         }
         Collections.shuffle(cards);
+    }
+
+    private static void insertAllCardsDecidedShape(CardShape cardShape) {
+        CardLetter[] cardLetters = CardLetter.values();
+
+        for (CardLetter cardLetter : cardLetters) {
+            cards.add(new Card(cardLetter, cardShape));
+        }
     }
 }

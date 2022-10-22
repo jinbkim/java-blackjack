@@ -14,10 +14,6 @@ public class Card {
         return letter.getLetter();
     }
 
-    public String getShape() {
-        return shape.getShape();
-    }
-
     public int getScore() {
         return letter.getScore();
     }

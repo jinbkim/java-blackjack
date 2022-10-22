@@ -11,8 +11,9 @@ public class Player {
     private static final double BLACKJACK_DIVIDEND_RATE = 1.5;
 
     private final String name;
+    private final int betAmount;
+
     private int money = 0;
-    private int betAmount;
     private Cards cards = new Cards(INITIAL_CARD_COUNT);
     private GameStatus gameStatus = GameStatus.IN_GAME;
 
@@ -51,35 +52,22 @@ public class Player {
     }
 
     public void calculateMoney(Dealer dealer) {
-        if (gameStatus == GameStatus.BURST) {
-            lose(betAmount);
-            dealer.win(betAmount);
+        if (isPlayerOnlyBlackjack(dealer)) {
+            playerWin((int) (BLACKJACK_DIVIDEND_RATE * betAmount), dealer);
         }
-        else if (gameStatus == GameStatus.BLACKJACK && !dealer.isGameStatus(GameStatus.BLACKJACK)) {
-            win((int) (BLACKJACK_DIVIDEND_RATE * betAmount));
-            dealer.lose((int) (BLACKJACK_DIVIDEND_RATE * betAmount));
+        else if (isPlayerWin(dealer)) {
+            playerWin(betAmount, dealer);
         }
-        else if (gameStatus == GameStatus.DONE && dealer.isGameStatus(GameStatus.BURST)) {
-            win(betAmount);
-            dealer.lose(betAmount);
-        }
-        else if (gameStatus == GameStatus.DONE && !dealer.isGameStatus(GameStatus.BURST)) {
-            if (cards.diff(dealer.getCards()) > 0) {
-                win(betAmount);
-                dealer.lose(betAmount);
-            }
-            else if (cards.diff(dealer.getCards()) < 0) {
-                lose(betAmount);
-                dealer.win(betAmount);
-            }
+        else if (isPlayerLose(dealer)) {
+            playerLose(betAmount, dealer);
         }
     }
 
-    public void win(int betAmount) {
+    public void winMoney(int betAmount) {
         money += betAmount;
     }
 
-    public void lose(int betAmount) {
+    public void loseMoney(int betAmount) {
         money -= betAmount;
     }
 
@@ -101,5 +89,42 @@ public class Player {
 
     public int getMoney() {
         return money;
+    }
+
+    private void playerWin(int betAmount, Dealer dealer) {
+        winMoney(betAmount);
+        dealer.lose(betAmount);
+    }
+
+    private void playerLose(int betAmount, Dealer dealer) {
+        loseMoney(betAmount);
+        dealer.win(betAmount);
+    }
+
+    private boolean isPlayerOnlyBlackjack(Dealer dealer) {
+        if (gameStatus == GameStatus.BLACKJACK && !dealer.isGameStatus(GameStatus.BLACKJACK)) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isPlayerWin(Dealer dealer) {
+        if (gameStatus == GameStatus.DONE && dealer.isGameStatus(GameStatus.BURST)) {
+            return true;
+        }
+        else if (gameStatus == GameStatus.DONE && !dealer.isGameStatus(GameStatus.BURST) && cards.diff(dealer.getCards()) > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isPlayerLose(Dealer dealer) {
+        if (gameStatus == GameStatus.BURST) {
+            return true;
+        }
+        else if (gameStatus == GameStatus.DONE && !dealer.isGameStatus(GameStatus.BURST) && cards.diff(dealer.getCards()) < 0) {
+            return true;
+        }
+        return false;
     }
 }

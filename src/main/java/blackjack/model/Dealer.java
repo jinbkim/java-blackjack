@@ -29,18 +29,11 @@ public class Dealer {
 
     public void drawCard() {
         add(CardCollection.draw());
-        if (cards.isBlackjack()) {
-            gameStatus = GameStatus.BLACKJACK;
-            return;
-        }
         while (cards.getCardNumSumWithACard() <= DRAW_POSSIBLE_LEVEL) {
             add(CardCollection.draw());
             OutputView.printDealerDrawCard();
         }
-        gameStatus = GameStatus.DONE;
-        if (cards.isBurst()) {
-            gameStatus = GameStatus.BURST;
-        }
+        gameStatus = calculateGameStatus();
     }
 
     public void win(int betAmount) {
@@ -66,4 +59,15 @@ public class Dealer {
     private void add(Card card) {
         cards.add(card);
     }
+
+    private GameStatus calculateGameStatus() {
+        if (cards.isBlackjack()) {
+            return GameStatus.BLACKJACK;
+        }
+        if (cards.isBurst()) {
+            return GameStatus.BURST;
+        }
+        return GameStatus.DONE;
+    }
+
 }

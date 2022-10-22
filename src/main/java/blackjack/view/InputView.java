@@ -54,6 +54,12 @@ public class InputView {
         System.out.println();
     }
 
+    public static void validateIsDrawCard(String input) {
+        if (!Pattern.matches(IS_DRAW_CARD_REGEX, input)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private static void requestPlayerDrawCard(Player player) {
         OutputView.printRequestDrawCard(player.getName());
         String input = requestInput();
@@ -98,11 +104,5 @@ public class InputView {
         Scanner scanner = new Scanner(System.in);
 
         return scanner.nextLine();
-    }
-
-    public static void validateIsDrawCard(String input) {
-        if (!Pattern.matches(IS_DRAW_CARD_REGEX, input)) {
-            throw new IllegalArgumentException();
-        }
     }
 }
