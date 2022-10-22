@@ -10,7 +10,7 @@ import blackjack.view.OutputView;
 
 public class GameController {
 
-    public void run() {
+    public static void run() {
         PlayerNames playerNames = InputView.requestPlayerName();
         PlayerBetAmounts playerBetAmounts = InputView.requestPlayerBetAmounts(playerNames);
         Players players = new Players(playerNames.getNames(), playerBetAmounts.getBetAmounts());
