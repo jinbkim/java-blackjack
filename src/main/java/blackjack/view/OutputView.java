@@ -66,12 +66,10 @@ public class OutputView {
         System.out.println(DEALER_DRAW_CARD);
     }
 
-    public static void printCardResult(List<Player> players, Dealer dealer) {
+    public static void printResult(List<Player> players, Dealer dealer) {
+        System.out.println();
         printDealerCardResult(dealer);
         printPlayersCardResult(players);
-    }
-
-    public static void printMoneyResult(List<Player> players, Dealer dealer) {
         System.out.println();
         System.out.println(MONEY_RESULT);
         printDealerMoneyResult(dealer);

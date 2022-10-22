@@ -39,8 +39,7 @@ public class Player {
     }
 
     public boolean isBlackjack() {
-        if (cards.get()
-            .size() == INITIAL_CARD_COUNT && cards.is21()) {
+        if (cards.isBlackjack()) {
             gameStatus = GameStatus.BLACKJACK;
             return true;
         }

@@ -27,12 +27,9 @@ public class Dealer {
         return cards;
     }
 
-    public void add(Card card) {
-        cards.add(card);
-    }
-
     public void drawCard() {
-        if (cards.is21()) {
+        add(CardCollection.draw());
+        if (cards.isBlackjack()) {
             gameStatus = GameStatus.BLACKJACK;
             return;
         }
@@ -64,5 +61,9 @@ public class Dealer {
 
     public int getMoney() {
         return money;
+    }
+
+    private void add(Card card) {
+        cards.add(card);
     }
 }

@@ -11,6 +11,7 @@ public class Cards {
     private static final int BLACK_JACK_LEVEL = 21;
     private static final int A_CARD_SCORE_MAX = 11;
     private static final int A_CARD_SCORE_MIN = 1;
+    private static final int INITIAL_CARD_SIZE = 2;
 
     private List<Card> cards = new ArrayList<>();
 
@@ -53,6 +54,13 @@ public class Cards {
 
     public int diff(Cards target) {
         return getCardNumSumWithACard() - target.getCardNumSumWithACard();
+    }
+
+    public boolean isBlackjack() {
+        if (is21() && cards.size() == INITIAL_CARD_SIZE) {
+            return true;
+        }
+        return false;
     }
 
     @Override

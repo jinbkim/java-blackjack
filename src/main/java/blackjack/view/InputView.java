@@ -27,7 +27,7 @@ public class InputView {
         }
     }
 
-    public static PlayerBetAmounts requestPlayerBetAmounts(PlayerNames playerNames) {
+    public static PlayerBetAmounts requestPlayersBetAmount(PlayerNames playerNames) {
         PlayerBetAmounts playerBetAmounts = new PlayerBetAmounts();
 
         for (String name : playerNames.getNames()) {
@@ -51,6 +51,7 @@ public class InputView {
                 requestPlayerDrawCard(player);
             }
         });
+        System.out.println();
     }
 
     private static void requestPlayerDrawCard(Player player) {
@@ -82,7 +83,7 @@ public class InputView {
     private static int requestPlayerBetAmount(String playerName) {
         OutputView.printRequestPlayerBetAmount(playerName);
         String input = requestInput();
-        String noSpaceInput = input.replaceAll(SPACE_REGEX, input);
+        String noSpaceInput = input.replaceAll(SPACE_REGEX, "");
 
         try {
             validateBetAmount(noSpaceInput);
