@@ -21,6 +21,8 @@ public class OutputView {
     private static final String PLAYER_NAME_JOIN_DEL = ", ";
     private static final String NEWLINE = "\n";
     private static final String RESULT = " - 결과: ";
+    private static final String MONEY_RESULT = "## 최종 수익";
+    private static final String COLON = ": ";
 
     public static void printWrongPlayerName() {
         System.out.println(WRONG_PLAYER_NAME);
@@ -69,15 +71,33 @@ public class OutputView {
         printPlayersCardResult(players);
     }
 
+    public static void printMoneyResult(List<Player> players, Dealer dealer) {
+        System.out.println();
+        System.out.println(MONEY_RESULT);
+        printDealerMoneyResult(dealer);
+        printPlayersMoneyResult(players);
+    }
+
+    private static void printDealerMoneyResult(Dealer dealer) {
+        System.out.println(DEALER + COLON + dealer.getMoney());
+    }
+
+    private static void printPlayersMoneyResult(List<Player> players) {
+        players.forEach(player -> printPlayerMoneyResult(player));
+    }
+
+    private static void printPlayerMoneyResult(Player player) {
+        System.out.println(player.getName() + COLON + player.getMoney());
+    }
+
+
     private static void printDealerCards(Dealer dealer) {
         System.out.println(DEALER + CARD_STATE + dealer.getCards()
             .toString());
     }
 
     private static void printPlayersCards(List<Player> players) {
-        players.forEach(player -> {
-            printPlayerCards(player);
-        });
+        players.forEach(player -> printPlayerCards(player));
     }
 
     private static void printDealerCardResult(Dealer dealer) {

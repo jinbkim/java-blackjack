@@ -61,4 +61,8 @@ public class Dealer {
     public boolean isMoney(int money) {
         return this.money == money;
     }
+
+    public int getMoney() {
+        return money;
+    }
 }

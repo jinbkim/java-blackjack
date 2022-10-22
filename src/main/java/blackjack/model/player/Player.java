@@ -28,14 +28,6 @@ public class Player {
         this.gameStatus = gameStatus;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Cards getCards() {
-        return cards;
-    }
-
     public void drawCard() {
         cards.add(CardCollection.draw());
         if (cards.isBurst()) {
@@ -98,5 +90,17 @@ public class Player {
 
     public boolean isMoney(int money) {
         return this.money == money;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Cards getCards() {
+        return cards;
+    }
+
+    public int getMoney() {
+        return money;
     }
 }

@@ -24,5 +24,6 @@ public class GameController {
         System.out.println();
         players.calculateMoney(dealer);
         OutputView.printCardResult(players.get(), dealer);
+        OutputView.printMoneyResult(players.get(), dealer);
     }
 }
