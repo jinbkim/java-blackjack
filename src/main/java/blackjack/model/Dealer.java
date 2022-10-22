@@ -27,6 +27,10 @@ public class Dealer {
             add(CardCollection.draw());
             OutputView.printDealerDrawCard();
         }
+        gameStatus = GameStatus.DONE;
+        if (cards.isBurst()) {
+            gameStatus = GameStatus.BURST;
+        }
         System.out.println();
 
     }

@@ -30,7 +30,7 @@ public class Player {
         return cards;
     }
 
-    public GameStatus drawCard() {
+    public void drawCard() {
         cards.add(CardCollection.draw());
         if (cards.isBurst()) {
             gameStatus = GameStatus.BURST;
@@ -41,12 +41,40 @@ public class Player {
         return gameStatus;
     }
 
-    public boolean checkBlackjack() {
+    public boolean isBlackjack() {
         if (cards.get()
             .size() == INITIAL_CARD_COUNT && cards.is21()) {
             gameStatus = GameStatus.BLACKJACK;
             return true;
         }
         return false;
+    }
+
+    public void gameDone() {
+        gameStatus = GameStatus.DONE;
+    }
+
+//    public void calculateMoney(Dealer dealer) {
+//        if (gameStatus == GameStatus.BURST) {
+//            lose(money);
+//            dealer.win(money);
+//        }
+//        if (gameStatus == GameStatus.BLACKJACK && !dealer.isBlackjack()) {
+//            win((int) BLACKJACK_DIVIDEND_RATE * money);
+//            dealer.lose((int) BLACKJACK_DIVIDEND_RATE * money);
+//        }
+//        if (gameStatus == GameStatus.DONE)
+//    }
+//
+//    public void win(int money) {
+//        this.money += money;
+//    }
+//
+//    public void lose(int money) {
+//        this.money -= money;
+//    }
+
+    public boolean isGameStatus(GameStatus gameStatus) {
+        return this.gameStatus == gameStatus;
     }
 }

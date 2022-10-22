@@ -47,7 +47,7 @@ public class InputView {
 
     public static void requestPlayersDrawCard(List<Player> players) {
         players.forEach(player -> {
-            if (!player.checkBlackjack()) {
+            if (!player.isBlackjack()) {
                 requestPlayerDrawCard(player);
             }
         });
@@ -64,13 +64,14 @@ public class InputView {
             OutputView.printWrongIsDrawCard();
             requestPlayerDrawCard(player);
         }
-        if (noSpaceInput.equals(DRAW_MORE_CARD)) {
-            GameStatus gameStatus = player.drawCard();
-
-            OutputView.printPlayerCards(player);
-            if (gameStatus == GameStatus.IN_GAME) {
-                requestPlayerDrawCard(player);
-            }
+        if (!noSpaceInput.equals(DRAW_MORE_CARD)) {
+            player.gameDone();
+            return ;
+        }
+        player.drawCard();
+        OutputView.printPlayerCards(player);
+        if (player.isGameStatus(GameStatus.IN_GAME)) {
+            requestPlayerDrawCard(player);
         }
     }
 
