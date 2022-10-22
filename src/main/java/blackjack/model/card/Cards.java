@@ -29,8 +29,8 @@ public class Cards {
         cards.add(card);
     }
 
-    public int getCardNumSumWithACard() {
-        int cardNumSum = getCardNumSum();
+    public int calculateSumWithACard() {
+        int cardNumSum = calculateSum();
         int numOfACard = countACard();
 
         while (cardNumSum > BLACK_JACK_LEVEL && numOfACard > 0) {
@@ -45,15 +45,19 @@ public class Cards {
     }
 
     public boolean is21() {
-        return getCardNumSumWithACard() == BLACK_JACK_LEVEL;
+        return calculateSumWithACard() == BLACK_JACK_LEVEL;
     }
 
     public boolean isBurst() {
-        return getCardNumSumWithACard() > BLACK_JACK_LEVEL;
+        return calculateSumWithACard() > BLACK_JACK_LEVEL;
     }
 
-    public int diff(Cards target) {
-        return getCardNumSumWithACard() - target.getCardNumSumWithACard();
+    public boolean isSumBigger(Cards target) {
+        return calculateSumWithACard() > target.calculateSumWithACard();
+    }
+
+    public boolean isSumSmaller(Cards target) {
+        return calculateSumWithACard() < target.calculateSumWithACard();
     }
 
     public boolean isBlackjack() {
@@ -70,7 +74,7 @@ public class Cards {
             .collect(Collectors.joining(CARD_NAME_JOIN_DEL));
     }
 
-    private int getCardNumSum() {
+    private int calculateSum() {
         return cards.stream()
             .map(card -> card.getScore())
             .reduce((x, y) -> x + y)

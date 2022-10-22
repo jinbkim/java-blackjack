@@ -12,19 +12,19 @@ class CardsTest {
         List<Card> cardList = cards.get();
 
         cardList.add(new Card(CardLetter.ACE, CardShape.CLOVER));
-        Assertions.assertThat(cards.getCardNumSumWithACard())
+        Assertions.assertThat(cards.calculateSumWithACard())
             .isEqualTo(11);
 
         cards.add(new Card(CardLetter.NINE, CardShape.CLOVER));
-        Assertions.assertThat(cards.getCardNumSumWithACard())
+        Assertions.assertThat(cards.calculateSumWithACard())
             .isEqualTo(20);
 
         cardList.add(new Card(CardLetter.ACE, CardShape.CLOVER));
-        Assertions.assertThat(cards.getCardNumSumWithACard())
+        Assertions.assertThat(cards.calculateSumWithACard())
             .isEqualTo(21);
 
         cardList.add(new Card(CardLetter.ACE, CardShape.CLOVER));
-        Assertions.assertThat(cards.getCardNumSumWithACard())
+        Assertions.assertThat(cards.calculateSumWithACard())
             .isEqualTo(12);
     }
 }

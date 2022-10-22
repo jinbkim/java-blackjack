@@ -112,7 +112,7 @@ public class Player {
         if (gameStatus == GameStatus.DONE && dealer.isGameStatus(GameStatus.BURST)) {
             return true;
         }
-        else if (gameStatus == GameStatus.DONE && !dealer.isGameStatus(GameStatus.BURST) && cards.diff(dealer.getCards()) > 0) {
+        else if (gameStatus == GameStatus.DONE && !dealer.isGameStatus(GameStatus.BURST) && cards.isSumBigger(dealer.getCards())) {
             return true;
         }
         return false;
@@ -122,7 +122,7 @@ public class Player {
         if (gameStatus == GameStatus.BURST) {
             return true;
         }
-        else if (gameStatus == GameStatus.DONE && !dealer.isGameStatus(GameStatus.BURST) && cards.diff(dealer.getCards()) < 0) {
+        else if (gameStatus == GameStatus.DONE && !dealer.isGameStatus(GameStatus.BURST) && cards.isSumSmaller(dealer.getCards())) {
             return true;
         }
         return false;

@@ -101,7 +101,7 @@ public class OutputView {
     private static void printDealerCardResult(Dealer dealer) {
         System.out.println(DEALER + CARD_STATE + dealer.getCards()
             .toString() + RESULT + dealer.getCards()
-            .getCardNumSumWithACard());
+            .calculateSumWithACard());
     }
 
     private static void printPlayersCardResult(List<Player> players) {
@@ -112,6 +112,6 @@ public class OutputView {
 
     private static void printPlayerCardResult(Player player) {
         System.out.println(player.getName() + CARD_STATE + player.getCards() + RESULT + player.getCards()
-            .getCardNumSumWithACard());
+            .calculateSumWithACard());
     }
 }

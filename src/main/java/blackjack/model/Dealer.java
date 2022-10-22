@@ -29,7 +29,7 @@ public class Dealer {
 
     public void drawCard() {
         add(CardCollection.draw());
-        while (cards.getCardNumSumWithACard() <= DRAW_POSSIBLE_LEVEL) {
+        while (cards.calculateSumWithACard() <= DRAW_POSSIBLE_LEVEL) {
             add(CardCollection.draw());
             OutputView.printDealerDrawCard();
         }

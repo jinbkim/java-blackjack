@@ -12,8 +12,8 @@ public class PlayerNames {
 
     public PlayerNames(String input) {
         String noSpaceInput = input.replaceAll(SPACE_REGEX, "");
-        names = Arrays.asList(noSpaceInput.split(PLAYER_SEP_REGEX));
 
+        names = Arrays.asList(noSpaceInput.split(PLAYER_SEP_REGEX));
         if (hasPlayerEmptyName(names)) {
             throw new IllegalArgumentException();
         }
