@@ -19,7 +19,9 @@ public class GameController {
         OutputView.printInitialCardDistribution(players.get(), dealer);
         dealer.add(CardCollection.draw());
         InputView.requestPlayersDrawCard(players.get());
+        System.out.println();
         dealer.drawCard();
+        System.out.println();
         OutputView.printCardResult(players.get(), dealer);
     }
 }

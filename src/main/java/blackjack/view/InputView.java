@@ -56,7 +56,7 @@ public class InputView {
     private static void requestPlayerDrawCard(Player player) {
         OutputView.printRequestDrawCard(player.getName());
         String input = requestInput();
-        String noSpaceInput = input.replaceAll(SPACE_REGEX, input);
+        String noSpaceInput = input.replaceAll(SPACE_REGEX, "");
 
         try {
             validateIsDrawCard(noSpaceInput);
@@ -64,9 +64,13 @@ public class InputView {
             OutputView.printWrongIsDrawCard();
             requestPlayerDrawCard(player);
         }
-        if (!noSpaceInput.equals(DRAW_MORE_CARD)) {
+        handleIsDrawCardInput(player, noSpaceInput);
+    }
+
+    private static void handleIsDrawCardInput(Player player, String input) {
+        if (!input.equals(DRAW_MORE_CARD)) {
             player.gameDone();
-            return ;
+            return;
         }
         player.drawCard();
         OutputView.printPlayerCards(player);
