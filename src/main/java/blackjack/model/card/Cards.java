@@ -47,6 +47,10 @@ public class Cards {
         return getCardNumSumWithACard() > BLACK_JACK_LEVEL;
     }
 
+    public int diff(Cards target) {
+        return getCardNumSumWithACard() - target.getCardNumSumWithACard();
+    }
+
     @Override
     public String toString() {
         return cards.stream()

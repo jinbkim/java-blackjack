@@ -1,5 +1,6 @@
 package blackjack.model.player;
 
+import blackjack.model.Dealer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,10 @@ public class Players {
         for (int i = 0; i < names.size(); i++) {
             players.add(new Player(names.get(i), betAmounts.get(i)));
         }
+    }
+
+    public void calculateMoney(Dealer dealer) {
+        players.forEach(player -> player.calculateMoney(dealer));
     }
 
     public List<Player> get() {
