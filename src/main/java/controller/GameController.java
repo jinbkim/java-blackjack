@@ -1,9 +1,11 @@
 package controller;
 
+import model.card.Dealer;
 import model.card.Players;
 import model.player.PlayersBetMoney;
 import model.player.PlayersName;
 import view.InputView;
+import view.OutputView;
 
 public class GameController {
 
@@ -11,5 +13,9 @@ public class GameController {
         PlayersName playersName = InputView.requestPlayerName();
         PlayersBetMoney playersBetMoney = InputView.requestPlayersBetMoney(playersName.get());
         Players players = new Players(playersName.get(), playersBetMoney.get());
+        Dealer dealer = new Dealer();
+
+        OutputView.initialCardDraw(players.get(), dealer);
+
     }
 }

@@ -7,13 +7,13 @@ import utils.Utils;
 
 public class PlayersName {
 
-    private static final String PLAYER_NAME_SEPARATOR = ",";
+    private static final String PLAYER_NAME_DELIMITER = ",";
 
     private final List<String> names = new ArrayList<>();
 
     public PlayersName(String input) {
         Arrays.stream(Utils.deleteAllSpace(input)
-                .split(PLAYER_NAME_SEPARATOR))
+                .split(PLAYER_NAME_DELIMITER))
             .forEach(name -> {
                 validatePlayerName(name);
                 names.add(name);

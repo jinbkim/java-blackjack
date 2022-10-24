@@ -12,4 +12,8 @@ public class Players {
         IntStream.range(0, playersName.size())
             .forEach(i -> players.add(new Player(playersName.get(i), playersBetMoney.get(i))));
     }
+
+    public List<Player> get() {
+        return players;
+    }
 }
