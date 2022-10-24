@@ -21,13 +21,18 @@ public class InputView {
 
     public static PlayersBetMoney requestPlayersBetMoney(List<String> names) {
         PlayersBetMoney playersBetMoney = new PlayersBetMoney();
-        names.forEach(name -> playersBetMoney.add(requestPlayerBetMoney(name)));
+        names.forEach(name -> requestPlayerBetMoney(playersBetMoney, name));
 
         return playersBetMoney;
     }
 
-    private static String requestPlayerBetMoney(String name) {
+    private static void requestPlayerBetMoney(PlayersBetMoney playersBetMoney, String name) {
         OutputView.requestPlayerBetMoney(name);
-        return scanner.nextLine();
+        try {
+            playersBetMoney.add(scanner.nextLine());
+        } catch (IllegalArgumentException e) {
+            OutputView.wrongPlayerBetMoney();
+            requestPlayerBetMoney(playersBetMoney, name);
+        }
     }
 }
