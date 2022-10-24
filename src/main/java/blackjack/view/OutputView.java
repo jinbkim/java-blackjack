@@ -1,6 +1,6 @@
 package blackjack.view;
 
-import blackjack.model.Dealer;
+import blackjack.model.player.Dealer;
 import blackjack.model.player.Player;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -105,9 +105,7 @@ public class OutputView {
     }
 
     private static void printPlayersCardResult(List<Player> players) {
-        players.forEach(player -> {
-            printPlayerCardResult(player);
-        });
+        players.forEach(player -> printPlayerCardResult(player));
     }
 
     private static void printPlayerCardResult(Player player) {

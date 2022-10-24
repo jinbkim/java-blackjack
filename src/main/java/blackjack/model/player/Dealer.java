@@ -1,6 +1,5 @@
-package blackjack.model;
+package blackjack.model.player;
 
-import blackjack.model.card.Card;
 import blackjack.model.card.CardCollection;
 import blackjack.model.card.Cards;
 import blackjack.view.OutputView;

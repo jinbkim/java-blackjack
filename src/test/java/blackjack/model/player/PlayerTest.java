@@ -1,7 +1,5 @@
 package blackjack.model.player;
 
-import blackjack.model.Dealer;
-import blackjack.model.GameStatus;
 import blackjack.model.card.Card;
 import blackjack.model.card.CardLetter;
 import blackjack.model.card.CardShape;
@@ -67,7 +65,7 @@ class PlayerTest {
     @Test
     void A_플레이어_승_B_플레이어_패() {
         Player aPlayer = new Player("승리", 100, sum20Cards, GameStatus.DONE);
-        Player bPlayer = new Player("승리", 100, sum12Cards, GameStatus.DONE);
+        Player bPlayer = new Player("패배", 100, sum12Cards, GameStatus.DONE);
         Dealer sum15Dealer = new Dealer(sum15Cards, GameStatus.DONE);
 
         aPlayer.calculateMoney(sum15Dealer);

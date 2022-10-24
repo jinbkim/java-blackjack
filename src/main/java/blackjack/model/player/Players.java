@@ -1,6 +1,5 @@
 package blackjack.model.player;
 
-import blackjack.model.Dealer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;

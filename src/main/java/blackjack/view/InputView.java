@@ -1,6 +1,6 @@
 package blackjack.view;
 
-import blackjack.model.GameStatus;
+import blackjack.model.player.GameStatus;
 import blackjack.model.player.Player;
 import blackjack.model.player.PlayerBetAmounts;
 import blackjack.model.player.PlayerNames;

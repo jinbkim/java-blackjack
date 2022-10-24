@@ -1,7 +1,5 @@
 package blackjack.model.player;
 
-import blackjack.model.Dealer;
-import blackjack.model.GameStatus;
 import blackjack.model.card.CardCollection;
 import blackjack.model.card.Cards;
 
