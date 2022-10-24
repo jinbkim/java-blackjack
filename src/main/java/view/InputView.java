@@ -2,8 +2,8 @@ package view;
 
 import java.util.List;
 import java.util.Scanner;
-import model.PlayersBetMoney;
-import model.PlayersName;
+import model.player.PlayersBetMoney;
+import model.player.PlayersName;
 
 public class InputView {
 

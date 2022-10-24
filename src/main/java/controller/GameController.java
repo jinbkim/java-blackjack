@@ -1,7 +1,7 @@
 package controller;
 
-import model.PlayersBetMoney;
-import model.PlayersName;
+import model.player.PlayersBetMoney;
+import model.player.PlayersName;
 import view.InputView;
 
 public class GameController {
