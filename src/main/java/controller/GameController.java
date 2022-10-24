@@ -6,6 +6,6 @@ import view.InputView;
 public class GameController {
 
     public static void run() {
-        InputView.requestPlayerName()
+        PlayersName playersName = InputView.requestPlayerName();
     }
 }

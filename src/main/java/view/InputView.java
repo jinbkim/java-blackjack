@@ -9,6 +9,11 @@ public class InputView {
 
     public static PlayersName requestPlayerName() {
         OutputView.requestPlayerName();
-        return new PlayersName(scanner.nextLine());
+        try {
+            return new PlayersName(scanner.nextLine());
+        } catch (IllegalArgumentException e) {
+            OutputView.wrongPlayerName();
+            return requestPlayerName();
+        }
     }
 }

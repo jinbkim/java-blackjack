@@ -12,4 +12,15 @@ class PlayersNameTest {
         Assertions.assertThat(playersName.get())
             .contains("a", "bc", "def", "ghij");
     }
+
+    @Test
+    void 플레이어_이름_정상적인_입력값() {
+        Assertions.assertThatCode(() -> new PlayersName(" a,bc , d e f, ghij"))
+            .doesNotThrowAnyException();
+    }
+
+    @Test
+    void 플레이어_이름_비정상적인_입력값() {
+        Assertions.assertThatThrownBy(() -> new PlayersName("a,,b"));
+    }
 }

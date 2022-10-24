@@ -14,10 +14,19 @@ public class PlayersName {
     public PlayersName(String input) {
         Arrays.stream(Utils.deleteAllSpace(input)
                 .split(PLAYER_NAME_SEPARATOR))
-            .forEach(name -> names.add(name));
+            .forEach(name -> {
+                validatePlayerName(name);
+                names.add(name);
+            });
     }
 
     public List<String> get() {
         return names;
+    }
+
+    private void validatePlayerName(String name) {
+        if (name.length() == 0) {
+            throw new IllegalArgumentException();
+        }
     }
 }
