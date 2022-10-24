@@ -1,6 +1,6 @@
 package blackjack.model.card;
 
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.Stack;
 
 public class CardCollection {
@@ -16,19 +16,8 @@ public class CardCollection {
     }
 
     private static void insertAllCards() {
-        CardShape[] cardShapes = CardShape.values();
-
-        for (CardShape cardShape : cardShapes) {
-            insertAllCardsDecidedShape(cardShape);
-        }
-        Collections.shuffle(cards);
-    }
-
-    private static void insertAllCardsDecidedShape(CardShape cardShape) {
-        CardLetter[] cardLetters = CardLetter.values();
-
-        for (CardLetter cardLetter : cardLetters) {
-            cards.add(new Card(cardLetter, cardShape));
-        }
+        Arrays.stream(CardShape.values())
+            .forEach(cardShape -> Arrays.stream(CardLetter.values())
+                .forEach(cardLetter -> cards.add(new Card(cardLetter, cardShape))));
     }
 }

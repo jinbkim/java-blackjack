@@ -3,16 +3,15 @@ package blackjack.model.player;
 import blackjack.model.Dealer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Players {
 
-    private List<Player> players;
+    private List<Player> players = new ArrayList<>();
 
     public Players(List<String> names, List<Integer> betAmounts) {
-        players = new ArrayList<>();
-        for (int i = 0; i < names.size(); i++) {
-            players.add(new Player(names.get(i), betAmounts.get(i)));
-        }
+        IntStream.range(0, names.size())
+            .forEach(i -> players.add(new Player(names.get(i), betAmounts.get(i))));
     }
 
     public void calculateMoney(Dealer dealer) {

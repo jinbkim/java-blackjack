@@ -12,10 +12,9 @@ class PlayerNamesTest {
         PlayerNames playerNames = new PlayerNames(" 가 , 나 다, 라마 바, 사 아자차 ");
         List<String> names = Arrays.asList("가", "나다", "라마바", "사아자차");
 
-        for (String name : playerNames.getNames()) {
-            Assertions.assertThat(names.contains(name))
-                .isTrue();
-        }
+        playerNames.getNames()
+            .forEach(name -> Assertions.assertThat(names.contains(name))
+                .isTrue());
     }
 
     @Test

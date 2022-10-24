@@ -3,6 +3,7 @@ package blackjack.model.card;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Cards {
 
@@ -16,9 +17,8 @@ public class Cards {
     private List<Card> cards = new ArrayList<>();
 
     public Cards(int initialCardCount) {
-        for (int i = 0; i < initialCardCount; i++) {
-            cards.add(CardCollection.draw());
-        }
+        IntStream.range(0, initialCardCount)
+            .forEach(i -> cards.add(CardCollection.draw()));
     }
 
     public Cards(List<Card> cards) {

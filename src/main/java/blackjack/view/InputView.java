@@ -30,9 +30,9 @@ public class InputView {
     public static PlayerBetAmounts requestPlayersBetAmount(PlayerNames playerNames) {
         PlayerBetAmounts playerBetAmounts = new PlayerBetAmounts();
 
-        for (String name : playerNames.getNames()) {
-            playerBetAmounts.add(requestPlayerBetAmount(name));
-        }
+        playerNames.getNames()
+            .stream()
+            .forEach(name -> playerBetAmounts.add(requestPlayerBetAmount(name)));
         return playerBetAmounts;
     }
 
