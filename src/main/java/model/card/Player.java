@@ -4,6 +4,7 @@ public class Player {
 
     private final String name;
     private final int betMoney;
+    private final Cards cards = new Cards();
 
     public Player(String name, int betMoney) {
         this.name = name;
@@ -12,5 +13,9 @@ public class Player {
 
     public String getName() {
         return name;
+    }
+
+    public Cards getCards() {
+        return cards;
     }
 }
