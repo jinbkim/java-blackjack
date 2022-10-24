@@ -70,6 +70,7 @@ public class InputView {
         } catch (IllegalArgumentException e) {
             OutputView.printWrongIsDrawCard();
             requestPlayerDrawCard(player);
+            return;
         }
         handleIsDrawCardInput(player, noSpaceInput);
     }
