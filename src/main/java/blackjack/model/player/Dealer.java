@@ -4,17 +4,13 @@ import blackjack.model.card.CardCollection;
 import blackjack.model.card.Cards;
 import blackjack.view.OutputView;
 
-public class Dealer {
+public class Dealer extends User {
 
     private static final int INITIAL_CARD_COUNT = 1;
     private static final int DRAW_POSSIBLE_LEVEL = 16;
 
-    private Cards cards = new Cards(INITIAL_CARD_COUNT);
-    private int money = 0;
-    private GameStatus gameStatus = GameStatus.IN_GAME;
-
     public Dealer() {
-
+        cards = new Cards(INITIAL_CARD_COUNT);
     }
 
     public Dealer(Cards cards, GameStatus gameStatus) {
@@ -22,10 +18,7 @@ public class Dealer {
         this.gameStatus = gameStatus;
     }
 
-    public Cards getCards() {
-        return cards;
-    }
-
+    @Override
     public void drawCard() {
         add(CardCollection.draw());
         while (cards.calculateSumWithACard() <= DRAW_POSSIBLE_LEVEL) {
@@ -33,30 +26,6 @@ public class Dealer {
             OutputView.printDealerDrawCard();
         }
         gameStatus = calculateGameStatus();
-    }
-
-    public void win(int betAmount) {
-        money += betAmount;
-    }
-
-    public void lose(int betAmount) {
-        money -= betAmount;
-    }
-
-    public boolean isGameStatus(GameStatus gameStatus) {
-        return this.gameStatus == gameStatus;
-    }
-
-    public boolean isMoney(int money) {
-        return this.money == money;
-    }
-
-    public int getMoney() {
-        return money;
-    }
-
-    private void add(Card card) {
-        cards.add(card);
     }
 
     private GameStatus calculateGameStatus() {
