@@ -14,4 +14,8 @@ abstract public class User {
     public void draw() {
         cards.add(Deck.draw());
     }
+
+    public boolean isBurst() {
+        return cards.isBurst();
+    }
 }
