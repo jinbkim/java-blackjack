@@ -16,8 +16,10 @@ public class GameController {
         Dealer dealer = new Dealer();
 
         OutputView.printInitialCardDraw(players.get(), dealer);
-        InputView.requestPlayersDrawCard(players);
+        InputView.requestPlayersDrawCard(players.get());
         dealer.drawMore();
+        players.get()
+            .forEach(player -> player.battle(dealer));
         OutputView.printGameResult(players.get(), dealer);
     }
 }

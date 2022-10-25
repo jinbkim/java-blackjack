@@ -5,6 +5,8 @@ import model.card.Deck;
 
 abstract public class User {
 
+    private static final int TWENTY_ONE = 21;
+
     protected Cards cards = new Cards();
     private int money = 0;
 
@@ -13,7 +15,11 @@ abstract public class User {
     }
 
     public boolean isBurst() {
-        return cards.isBurst();
+        return cardSum() > TWENTY_ONE;
+    }
+
+    public boolean isSum21() {
+        return cardSum() == TWENTY_ONE;
     }
 
     public int cardSum() {

@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import model.player.Player;
-import model.player.Players;
 import model.player.PlayersBetMoney;
 import model.player.PlayersName;
 import utils.Utils;
@@ -32,9 +31,12 @@ public class InputView {
         return playersBetMoney;
     }
 
-    public static void requestPlayersDrawCard(Players players) {
-        players.get()
-            .forEach(InputView::requestPlayerDrawCard);
+    public static void requestPlayersDrawCard(List<Player> players) {
+        players.forEach(player -> {
+            if (!player.isSum21()) {
+                requestPlayerDrawCard(player);
+            }
+        });
     }
 
     private static void requestPlayerBetMoney(PlayersBetMoney playersBetMoney, String name) {
@@ -73,7 +75,7 @@ public class InputView {
         }
         player.draw();
         OutputView.printPlayerCard(player);
-        if (!player.isBurst()) {
+        if (!player.isBurst() && !player.isSum21()) {
             requestPlayerDrawCard(player);
         }
     }

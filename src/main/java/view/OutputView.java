@@ -19,6 +19,8 @@ public class OutputView {
     private static final String WRONG_REQUEST_DRAW_CARD = "y 또는 n만 입력하세요.";
     private static final String DEALER_DRAW_CARD = "딜러는 16이하라 한장의 카드를 더 받았습니다.";
     private static final String RESULT = " - 결과: ";
+    private static final String FINAL_MONEY = "## 최종 수익";
+    private static final String COLON = ": ";
 
     public static void printRequestPlayerName() {
         System.out.println(REQUEST_PLAYER_NAME);
@@ -70,9 +72,16 @@ public class OutputView {
     public static void printGameResult(List<Player> players, Dealer dealer) {
         printDealerCardWithResult(dealer);
         players.forEach(OutputView::printPlayerCardWithResult);
+        System.out.println(FINAL_MONEY);
+        System.out.println(DEALER + COLON + dealer.getMoney());
+        players.forEach(OutputView::printPlayerMoney);
     }
 
     private static void printPlayerCardWithResult(Player player) {
         System.out.println(player.getName() + CARD_LIST + player.getCards() + RESULT + player.cardSum());
+    }
+
+    private static void printPlayerMoney(Player player) {
+        System.out.println(player.getName() + COLON + player.getMoney());
     }
 }
