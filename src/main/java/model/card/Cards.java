@@ -10,11 +10,15 @@ public class Cards {
     private static final int INITIAL_CARD_COUNT = 2;
     private static final String CARD_JOIN_DELIMITER = ", ";
 
-    private List<Card> cards = new ArrayList<>();
+    private final List<Card> cards = new ArrayList<>();
 
     public Cards() {
         IntStream.range(0, INITIAL_CARD_COUNT)
             .forEach(i -> cards.add(Deck.draw()));
+    }
+
+    public void add(Card card) {
+        cards.add(card);
     }
 
     @Override

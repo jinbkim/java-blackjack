@@ -8,4 +8,7 @@ abstract public class User {
         return cards;
     }
 
+    public void draw() {
+        cards.add(Deck.draw());
+    }
 }

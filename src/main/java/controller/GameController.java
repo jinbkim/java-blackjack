@@ -10,13 +10,13 @@ import view.OutputView;
 public class GameController {
 
     public static void run() {
-        PlayersName playersName = InputView.printRequestPlayerName();
+        PlayersName playersName = InputView.requestPlayerName();
         PlayersBetMoney playersBetMoney = InputView.requestPlayersBetMoney(playersName.get());
         Players players = new Players(playersName.get(), playersBetMoney.get());
         Dealer dealer = new Dealer();
 
         OutputView.printInitialCardDraw(players.get(), dealer);
-        players.drawCard();
+        InputView.playersRequestDrawCard(players);
 
     }
 }

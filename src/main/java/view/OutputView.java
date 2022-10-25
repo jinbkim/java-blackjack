@@ -42,7 +42,7 @@ public class OutputView {
         System.out.println(DRAW_TWO_CARDS[0] + names + DRAW_TWO_CARDS[1]);
         System.out.println(DEALER + CARD_LIST + dealer.getCardOne());
         players.stream()
-            .forEach(player -> System.out.println(player.getName() + CARD_LIST + player.getCards()));
+            .forEach(OutputView::printPlayerCard);
     }
 
     public static void printRequestDrawCard(String name) {
@@ -51,5 +51,9 @@ public class OutputView {
 
     public static void printWrongRequestDrawCard() {
         System.out.println(WRONG_REQUEST_DRAW_CARD);
+    }
+
+    public static void printPlayerCard(Player player) {
+        System.out.println(player.getName() + CARD_LIST + player.getCards());
     }
 }
