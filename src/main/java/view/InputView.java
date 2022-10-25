@@ -73,7 +73,9 @@ public class InputView {
         }
         player.draw();
         OutputView.printPlayerCard(player);
-        requestPlayerDrawCard(player);
+        if (!player.isBurst()) {
+            requestPlayerDrawCard(player);
+        }
     }
 
 }

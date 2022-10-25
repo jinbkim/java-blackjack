@@ -30,6 +30,9 @@ public class Cards {
     }
 
     public boolean isBurst() {
+        if (sumWithACard() > BURST_LEVEL) {
+            return true;
+        }
         return false;
     }
 
