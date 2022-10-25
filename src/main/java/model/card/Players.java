@@ -13,6 +13,10 @@ public class Players {
             .forEach(i -> players.add(new Player(playersName.get(i), playersBetMoney.get(i))));
     }
 
+    public void drawCard() {
+        players.forEach(Player::drawCard);
+    }
+
     public List<Player> get() {
         return players;
     }

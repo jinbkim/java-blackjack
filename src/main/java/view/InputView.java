@@ -2,12 +2,15 @@ package view;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 import model.player.PlayersBetMoney;
 import model.player.PlayersName;
+import utils.Utils;
 
 public class InputView {
 
-    private final static Scanner scanner = new Scanner(System.in);
+    private static final String REQUEST_DRAW_CARD_REGEX = "^[yn]{1}$";
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static PlayersName printRequestPlayerName() {
         OutputView.printRequestPlayerName();
@@ -26,6 +29,17 @@ public class InputView {
         return playersBetMoney;
     }
 
+    public static void printRequestDrawCard(String name) {
+        OutputView.printRequestDrawCard(name);
+        String input = scanner.nextLine();
+        try {
+            validateRequestDrawCard(Utils.deleteAllSpace(input));
+        } catch (IllegalArgumentException e) {
+            OutputView.printWrongRequestDrawCard();
+            printRequestDrawCard(name);
+        }
+    }
+
     private static void printRequestPlayerBetMoney(PlayersBetMoney playersBetMoney, String name) {
         OutputView.printRequestPlayerBetMoney(name);
         try {
@@ -35,4 +49,11 @@ public class InputView {
             printRequestPlayerBetMoney(playersBetMoney, name);
         }
     }
+
+    static void validateRequestDrawCard(String input) {
+        if (!Pattern.matches(REQUEST_DRAW_CARD_REGEX, input)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
