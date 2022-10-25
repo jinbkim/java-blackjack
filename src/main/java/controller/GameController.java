@@ -16,7 +16,7 @@ public class GameController {
         Dealer dealer = new Dealer();
 
         OutputView.printInitialCardDraw(players.get(), dealer);
-        InputView.playersRequestDrawCard(players);
+        InputView.requestPlayersDrawCard(players);
 
     }
 }

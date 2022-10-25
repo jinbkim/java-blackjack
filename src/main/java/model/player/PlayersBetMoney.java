@@ -12,7 +12,6 @@ public class PlayersBetMoney {
     private List<Integer> betMoneyList = new ArrayList<>();
 
     public void add(String betMoney) {
-
         validateBetMoney(Utils.deleteAllSpace(betMoney));
         betMoneyList.add(Integer.parseInt(Utils.deleteAllSpace(betMoney)));
     }

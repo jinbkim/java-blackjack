@@ -32,9 +32,9 @@ public class InputView {
         return playersBetMoney;
     }
 
-    public static void playersRequestDrawCard(Players players) {
+    public static void requestPlayersDrawCard(Players players) {
         players.get()
-            .forEach(InputView::playerRequestDrawCard);
+            .forEach(InputView::requestPlayerDrawCard);
     }
 
     private static void requestPlayerBetMoney(PlayersBetMoney playersBetMoney, String name) {
@@ -53,22 +53,27 @@ public class InputView {
         }
     }
 
-    private static void playerRequestDrawCard(Player player) {
+    private static void requestPlayerDrawCard(Player player) {
         OutputView.printRequestDrawCard(player.getName());
-        String input = scanner.nextLine();
+        String input = Utils.deleteAllSpace(scanner.nextLine());
 
         try {
-            validateRequestDrawCard(Utils.deleteAllSpace(input));
+            validateRequestDrawCard(input);
         } catch (IllegalArgumentException e) {
             OutputView.printWrongRequestDrawCard();
-            playerRequestDrawCard(player);
+            requestPlayerDrawCard(player);
+            return;
         }
-        if (Utils.deleteAllSpace(input)
-            .equals(IS_DRAW_CARD)) {
-            player.draw();
-            OutputView.printPlayerCard(player);
-            playerRequestDrawCard(player);
+        drawCard(input, player);
+    }
+
+    private static void drawCard(String input, Player player) {
+        if (!input.equals(IS_DRAW_CARD)) {
+            return;
         }
+        player.draw();
+        OutputView.printPlayerCard(player);
+        requestPlayerDrawCard(player);
     }
 
 }
