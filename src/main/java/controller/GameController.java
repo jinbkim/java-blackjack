@@ -17,6 +17,6 @@ public class GameController {
 
         OutputView.printInitialCardDraw(players.get(), dealer);
         InputView.requestPlayersDrawCard(players);
-
+        dealer.drawMore();
     }
 }
