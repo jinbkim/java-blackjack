@@ -1,6 +1,5 @@
-package model;
+package model.player;
 
-import model.player.PlayersBetMoney;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
