@@ -9,30 +9,30 @@ public class InputView {
 
     private final static Scanner scanner = new Scanner(System.in);
 
-    public static PlayersName requestPlayerName() {
-        OutputView.requestPlayerName();
+    public static PlayersName printRequestPlayerName() {
+        OutputView.printRequestPlayerName();
         try {
             return new PlayersName(scanner.nextLine());
         } catch (IllegalArgumentException e) {
-            OutputView.wrongPlayerName();
-            return requestPlayerName();
+            OutputView.printWrongPlayerName();
+            return printRequestPlayerName();
         }
     }
 
     public static PlayersBetMoney requestPlayersBetMoney(List<String> names) {
         PlayersBetMoney playersBetMoney = new PlayersBetMoney();
-        names.forEach(name -> requestPlayerBetMoney(playersBetMoney, name));
+        names.forEach(name -> printRequestPlayerBetMoney(playersBetMoney, name));
 
         return playersBetMoney;
     }
 
-    private static void requestPlayerBetMoney(PlayersBetMoney playersBetMoney, String name) {
-        OutputView.requestPlayerBetMoney(name);
+    private static void printRequestPlayerBetMoney(PlayersBetMoney playersBetMoney, String name) {
+        OutputView.printRequestPlayerBetMoney(name);
         try {
             playersBetMoney.add(scanner.nextLine());
         } catch (IllegalArgumentException e) {
-            OutputView.wrongPlayerBetMoney();
-            requestPlayerBetMoney(playersBetMoney, name);
+            OutputView.printWrongPlayerBetMoney();
+            printRequestPlayerBetMoney(playersBetMoney, name);
         }
     }
 }

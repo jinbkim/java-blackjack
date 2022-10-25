@@ -17,23 +17,23 @@ public class OutputView {
 
     private static final String PLAYER_NAME_JOIN_DELIMITER = ", ";
 
-    public static void requestPlayerName() {
+    public static void printRequestPlayerName() {
         System.out.println(REQUEST_PLAYER_NAME);
     }
 
-    public static void wrongPlayerName() {
+    public static void printWrongPlayerName() {
         System.out.println(WRONG_PLAYER_NAME);
     }
 
-    public static void requestPlayerBetMoney(String name) {
+    public static void printRequestPlayerBetMoney(String name) {
         System.out.println(name + REQUEST_PLAYER_BET_MONEY);
     }
 
-    public static void wrongPlayerBetMoney() {
+    public static void printWrongPlayerBetMoney() {
         System.out.println(WRONG_PLAYER_BET_MONEY);
     }
 
-    public static void initialCardDraw(List<Player> players, Dealer dealer) {
+    public static void printInitialCardDraw(List<Player> players, Dealer dealer) {
         String names = players.stream()
             .map(player -> player.getName())
             .collect(Collectors.joining(PLAYER_NAME_JOIN_DELIMITER));
