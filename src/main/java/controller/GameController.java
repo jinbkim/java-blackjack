@@ -18,8 +18,7 @@ public class GameController {
         OutputView.printInitialCardDraw(players.get(), dealer);
         InputView.requestPlayersDrawCard(players.get());
         dealer.drawMore();
-        players.get()
-            .forEach(player -> player.battle(dealer));
+        players.battle(dealer);
         OutputView.printGameResult(players.get(), dealer);
     }
 }

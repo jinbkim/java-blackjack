@@ -1,23 +1,21 @@
 package model.player;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import utils.Utils;
 
 public class PlayersName {
 
     private static final String PLAYER_NAME_DELIMITER = ",";
 
-    private final List<String> names = new ArrayList<>();
+    private final List<String> names;
 
     public PlayersName(String input) {
-        Arrays.stream(Utils.deleteAllSpace(input)
+        names = Arrays.stream(Utils.deleteAllSpace(input)
                 .split(PLAYER_NAME_DELIMITER))
-            .forEach(name -> {
-                validatePlayerName(name);
-                names.add(name);
-            });
+            .collect(Collectors.toList());
+        names.forEach(this::validatePlayerName);
     }
 
     public List<String> get() {

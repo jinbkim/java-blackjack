@@ -13,6 +13,10 @@ public class Players {
             .forEach(i -> players.add(new Player(playersName.get(i), playersBetMoney.get(i))));
     }
 
+    public void battle(Dealer dealer) {
+        players.forEach(player -> player.battle(dealer));
+    }
+
     public List<Player> get() {
         return players;
     }

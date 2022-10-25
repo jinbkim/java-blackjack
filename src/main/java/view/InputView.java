@@ -61,12 +61,11 @@ public class InputView {
 
         try {
             validateRequestDrawCard(input);
+            drawCard(input, player);
         } catch (IllegalArgumentException e) {
             OutputView.printWrongRequestDrawCard();
             requestPlayerDrawCard(player);
-            return;
         }
-        drawCard(input, player);
     }
 
     private static void drawCard(String input, Player player) {
