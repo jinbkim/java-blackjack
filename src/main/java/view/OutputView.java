@@ -66,4 +66,13 @@ public class OutputView {
     public static void printDealerCardWithResult(Dealer dealer) {
         System.out.println(DEALER + CARD_LIST + dealer.getCards() + RESULT + dealer.cardSum());
     }
+
+    public static void printGameResult(List<Player> players, Dealer dealer) {
+        printDealerCardWithResult(dealer);
+        players.forEach(OutputView::printPlayerCardWithResult);
+    }
+
+    private static void printPlayerCardWithResult(Player player) {
+        System.out.println(player.getName() + CARD_LIST + player.getCards() + RESULT + player.cardSum());
+    }
 }
