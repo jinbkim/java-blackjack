@@ -18,4 +18,8 @@ abstract public class User {
     public boolean isBurst() {
         return cards.isBurst();
     }
+
+    public int cardSum() {
+        return cards.sumWithACard();
+    }
 }

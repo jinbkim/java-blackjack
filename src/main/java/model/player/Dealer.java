@@ -17,5 +17,6 @@ public class Dealer extends User {
             OutputView.printDealerDrawCard();
             draw();
         }
+        OutputView.printDealerCardWithResult(this);
     }
 }
