@@ -5,11 +5,8 @@ import model.card.Deck;
 
 abstract public class User {
 
-    protected final Cards cards = new Cards();
-
-    public Cards getCards() {
-        return cards;
-    }
+    protected Cards cards = new Cards();
+    private int money = 0;
 
     public void draw() {
         cards.add(Deck.draw());
@@ -21,5 +18,21 @@ abstract public class User {
 
     public int cardSum() {
         return cards.sumWithACard();
+    }
+
+    public void winMoney(int money) {
+        this.money += money;
+    }
+
+    public void loseMoney(int money) {
+        this.money -= money;
+    }
+
+    public Cards getCards() {
+        return cards;
+    }
+
+    public int getMoney() {
+        return money;
     }
 }

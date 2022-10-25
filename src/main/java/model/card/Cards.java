@@ -47,6 +47,13 @@ public class Cards {
         return score;
     }
 
+    public boolean isBlackjack() {
+        if (sumWithACard() == BURST_LEVEL && cards.size() == INITIAL_CARD_COUNT) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return cards.stream()
