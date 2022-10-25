@@ -1,4 +1,4 @@
-package model.card;
+package model.player;
 
 public class Player extends User {
 

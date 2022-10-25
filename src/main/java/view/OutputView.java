@@ -2,8 +2,8 @@ package view;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import model.card.Dealer;
-import model.card.Player;
+import model.player.Dealer;
+import model.player.Player;
 
 public class OutputView {
 

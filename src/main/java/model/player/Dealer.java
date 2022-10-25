@@ -1,4 +1,6 @@
-package model.card;
+package model.player;
+
+import model.card.Card;
 
 public class Dealer extends User {
 

@@ -1,7 +1,7 @@
 package controller;
 
-import model.card.Dealer;
-import model.card.Players;
+import model.player.Dealer;
+import model.player.Players;
 import model.player.PlayersBetMoney;
 import model.player.PlayersName;
 import view.InputView;

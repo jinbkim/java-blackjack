@@ -1,4 +1,7 @@
-package model.card;
+package model.player;
+
+import model.card.Cards;
+import model.card.Deck;
 
 abstract public class User {
 
