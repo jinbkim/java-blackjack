@@ -1,12 +1,6 @@
 package model.card;
 
-public class Dealer {
-
-    private Cards cards = new Cards();
-
-    public Cards getCards() {
-        return cards;
-    }
+public class Dealer extends User {
 
     public Card getCardOne() {
         return cards.get()
